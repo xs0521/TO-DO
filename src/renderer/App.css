@@ -3,6 +3,7 @@
  *        See https://github.com/webpack-contrib/sass-loader#imports
  */
 body {
+  -webkit-app-region: drag;
   position: relative;
   color: white;
   height: 100vh;
@@ -20,6 +21,7 @@ body {
 }
 
 button {
+  -webkit-app-region: no-drag;
   background-color: white;
   padding: 10px 20px;
   border-radius: 10px;
