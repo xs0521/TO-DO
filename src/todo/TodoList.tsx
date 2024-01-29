@@ -1,7 +1,8 @@
 // TodoList.tsx
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import TodoItem from './TodoItem';
 import './TodoList.css'
+
 
 interface Todo {
   id: number;
@@ -9,13 +10,21 @@ interface Todo {
   completed: boolean;
 }
 
+// const Store = require('electron-store')
+
 const TodoList: React.FC = () => {
+
   const [todos, setTodos] = useState<Todo[]>([]);
   const [newTodo, setNewTodo] = useState<string>('');
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setNewTodo(e.target.value);
   };
+
+  useEffect(() => {
+    const value = window.electron.ipcRenderer.getStoreValue('todo_list_key');
+    setTodos(value);
+  }, [])
 
   const addTodo = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -25,12 +34,15 @@ const TodoList: React.FC = () => {
       text: newTodo,
       completed: false,
     };
-    setTodos([...todos, todo]);
+    const todoAll = [todo, ...todos]
+    setTodos(todoAll);
+    window.electron.ipcRenderer.setStoreValue('todo_list_key', todoAll);
     setNewTodo('');
   };
 
   const deleteTodo = (id: number) => {
     const updatedTodos = todos.filter((todo) => todo.id !== id);
+    window.electron.ipcRenderer.setStoreValue('todo_list_key', updatedTodos);
     setTodos(updatedTodos);
   };
 
@@ -44,6 +56,7 @@ const TodoList: React.FC = () => {
       }
       return todo;
     });
+    window.electron.ipcRenderer.setStoreValue('todo_list_key', updatedTodos);
     setTodos(updatedTodos);
   };
 

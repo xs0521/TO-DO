@@ -14,6 +14,7 @@ import { autoUpdater } from 'electron-updater';
 import log from 'electron-log';
 import MenuBuilder from './menu';
 import { resolveHtmlPath } from './util';
+const Store = require('electron-store');
 
 class AppUpdater {
   constructor() {
@@ -40,6 +41,18 @@ if (process.env.NODE_ENV === 'production') {
 
 const isDebug =
   process.env.NODE_ENV === 'development' || process.env.DEBUG_PROD === 'true';
+
+const store = new Store();
+console.log(`store path ${store.get('unicorn')}`);
+// 定义ipcRenderer监听事件
+ipcMain.on('setStore', (_, key, value) => {
+  store.set(key, value)
+})
+
+ipcMain.on('getStore', (_, key) => {
+  let value = store.get(key)
+  _.returnValue = value || ""
+})
 
 if (isDebug) {
   require('electron-debug')();
@@ -121,7 +134,7 @@ const createWindow = async () => {
   // });
 
   mainWindow.webContents.on("before-input-event", (event, input) => {
-    console.log("使用了键盘" + input.key + "键");
+    // console.log("使用了键盘" + input.key + "键");
   })
 
   const menuBuilder = new MenuBuilder(mainWindow);

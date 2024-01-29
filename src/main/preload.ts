@@ -21,6 +21,15 @@ const electronHandler = {
     once(channel: Channels, func: (...args: unknown[]) => void) {
       ipcRenderer.once(channel, (_event, ...args) => func(...args));
     },
+    setStoreValue: (key: string, value: any) => {
+      console.log(`set store key: ${key} value: ${value}`)
+      ipcRenderer.send("setStore", key, value)
+    },
+    getStoreValue(key: string) {
+      const resp = ipcRenderer.sendSync("getStore", key)
+      console.log(`sgetStore key: ${key} resp: ${resp}`)
+      return resp
+    },
   },
 };
 
