@@ -169,6 +169,7 @@ app.whenReady().then(() => {
       // dock icon is clicked and there are no other windows open.
       if (mainWindow === null) createWindow();
     });
+    app.dock.hide()
 
     const RESOURCES_PATH = app.isPackaged
     ? path.join(process.resourcesPath, 'assets')
@@ -178,7 +179,7 @@ app.whenReady().then(() => {
       return path.join(RESOURCES_PATH, ...paths);
     };
 
-    const icon_path = getAssetPath('icons/64x64@3x.png')
+    const icon_path = getAssetPath('menu_icon@3x.png')
     console.log(`icon_path ${icon_path}`)
 
     tray = new Tray(icon_path);
