@@ -1,33 +1,64 @@
 
 .todo-body {
-  width: 350px;
-  height: 728px;
+  display: flex;
+  width: 400px;
+  height: 628px;
   overflow: hidden;
+  /* background-color: blueviolet; */
 }
 
 .item-title {
   /* color: aquamarine; */
   position: fixed;
+  left: 20px;
   top: 0px;
-}
-
-.add-input-text {
-  height: 40px;
-  width: 250px;
-  border-radius: 20px;
-  border-width: 0.5px;
-  -webkit-app-region: no-drag;
 }
 
 .bottom-container {
   position: fixed;
   top: 80px;
+  width: 400px;
+  /* background-color: blueviolet; */
+}
+
+.input-container {
+  display: flex;
+  height: 44px;
+  /* background-color: blueviolet; */
+  align-items: center;
+}
+
+.input-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.add-input-text {
+  flex: 1;
+  margin-left: 20px;
+  height: 30px;
+  /* width: '100%'; */
+  border-radius: 20px;
+  border-width: 0.5px;
+  text-indent: 10px;
+  -webkit-app-region: no-drag;
 }
 
 .submit-button {
-  padding: 10px 20px; /* 调整按钮的内边距 */
-  font-size: 16px; /* 调整按钮的字体大小 */
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  font-weight: 600;
+  color: rgb(72, 76, 122);
+  font-size: 10px;
+  height: 25px;
+  padding: 0px 20px;
   margin-left: 20px;
+  margin-right: 20px;
+  border-radius: 10px;
+  background-image: linear-gradient(180deg,#fff,#f5f5fa);
+  box-shadow: 0 4px 11px 0 rgb(37 44 97 / 15%), 0 1px 3px 0 rgb(93 100 148 / 20%);
 }
 
 .list-container {
@@ -36,39 +67,62 @@
   padding-left: 0; /* 去除 ul 元素的左内边距 */
   margin-left: 0; /* 去除 ul 元素的左外边距 */
   overflow: auto;
-  max-height: 400px;
+  max-height: 480px;
+  -webkit-app-region: no-drag;
 }
 
-.list-item {
+.list-item-container {
   height: 44px;
-  width: 100%;
-  /* background-color: bisque; */
   flex-direction: row;
   flex-wrap: nowrap;
   display: flex;
   list-style: none;
   padding: 0;
-  margin: 0;
+  margin-left: 20px;
+  align-items: center;
 }
 
-.list-item-text {
+.list-item {
+  display: flex;
   flex: 1;
   width: 200px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
-  /* height: 44px; */
-  /* background-color: aqua; */
-  /* height: 100%; */
+  align-items: center;
+  flex-direction: row;
 }
 
 .list-item-checkbox {
   -webkit-app-region: no-drag;
+  width: 15px;
+  height: 15px;
 }
 
-.delete-button {
-  padding: 5px 10px; /* 调整按钮的内边距 */
-  font-size: 14px; /* 调整按钮的字体大小 */
-  margin-left: 20px;
-  height: 30px;
+.list-item-text {
+  flex: 1;
+  margin-left: 5px;
+  /* color: aquamarine; */
 }
+
+.list-item-delete-button {
+  display: inline-block;
+  outline: 0;
+  border: 0;
+  cursor: pointer;
+  font-weight: 600;
+  color: rgb(72, 76, 122);
+  font-size: 10px;
+  height: 25px;
+  padding: 0px 10px;
+  margin-right: 20px;
+  border-radius: 10px;
+  background-image: linear-gradient(180deg,#fff,#f5f5fa);
+  box-shadow: 0 4px 11px 0 rgb(37 44 97 / 15%), 0 1px 3px 0 rgb(93 100 148 / 20%);
+  /* transition: all .2s ease-out; */
+  /* :hover{
+      box-shadow: 0 8px 12px 0 rgb(37 44 97 / 15%), 0 4px 6px 0 rgb(93 100 148 / 20%);
+  } */
+  
+}
+

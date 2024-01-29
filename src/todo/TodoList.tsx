@@ -66,7 +66,7 @@ const TodoList: React.FC = () => {
       <div className='bottom-container'>
       <form className='input-container' onSubmit={addTodo}>
         <input className='add-input-text' type="text" value={newTodo} onChange={handleInputChange} />
-        <button className="submit-button" type="submit">Add</button>
+        <button className="submit-button" type="submit">ADD</button>
       </form>
       <ul className='list-container'>
         {todos.map((todo) => (
