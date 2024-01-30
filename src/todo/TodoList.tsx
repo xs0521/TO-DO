@@ -23,6 +23,9 @@ const TodoList: React.FC = () => {
 
   useEffect(() => {
     const value = window.electron.ipcRenderer.getStoreValue('todo_list_key');
+    if (value === "") {
+      return
+    }
     setTodos(value);
   }, [])
 
