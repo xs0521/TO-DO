@@ -175,7 +175,7 @@
   },
   "build": {
     "productName": "TODO",
-    "appId": "org.erb.ElectronReact",
+    "appId": "com.xs0521.todo",
     "asar": true,
     "asarUnpack": "**\\*.{node,dll}",
     "files": [
@@ -233,8 +233,8 @@
     ],
     "publish": {
       "provider": "github",
-      "owner": "electron-react-boilerplate",
-      "repo": "electron-react-boilerplate"
+      "owner": "xs0521",
+      "repo": "TO-DO"
     }
   },
   "collective": {
